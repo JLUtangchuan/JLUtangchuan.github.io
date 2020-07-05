@@ -1,15 +1,18 @@
 ---
 title: {{ title }}
 date: {{ date }}
-author: hojun
-avatar: https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg
-authorLink: hojun.cn
-authorAbout: 一个好奇的人
-authorDesc: 一个好奇的人
+author: 唐川
+avatar: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg
+authorLink: 
+authorAbout: 
+authorDesc: 
 categories: 技术
 comments: true
 tags: 
 keywords: 
 description: 
-photos: 
+photos: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/paperbg.jpg
+mathjax: true
 ---
+
+# {{ title }}

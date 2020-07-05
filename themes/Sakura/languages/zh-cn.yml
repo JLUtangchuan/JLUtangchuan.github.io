@@ -42,14 +42,37 @@ insight:
 
 #category
 技术:
-    zh: 野生技术协会
-    en: Geek – Only for Love
-    img: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg
+    zh: 技术向
+    en: Tech
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001218.jpg
 生活:
     zh: 生活
     en: live
-    img: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/writing.jpg
-
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001707.jpg
+论文:
+    zh: 论文笔记
+    en: Paper Reading
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/paperbg.jpg
+编程:
+    zh: 编程记录
+    en: Coding
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/coding2.jpg
+数学:
+    zh: 数学
+    en: Mathematics
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
+笔记:
+    zh: 读书笔记
+    en: Book Reading
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
+随记:
+    zh: 生活随记
+    en: Diary
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
+诗词:
+    zh: 诗词
+    en: 古今中外
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
 #tag
-悦读:
-    img: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/reading.jpg
+# 悦读:
+    # img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001735.jpg

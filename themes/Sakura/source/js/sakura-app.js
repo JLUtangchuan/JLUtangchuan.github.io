@@ -180,10 +180,10 @@ function imgError (ele, type) {
       break
     case 3:
 
-      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png'
+      ele.src = 'https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705000659.png'
       break
     default:
-      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png'
+      ele.src = 'https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705000659.png'
   }
 }
 mashiro_global.post_list_show_animation = new function () {
@@ -1090,7 +1090,7 @@ var home = location.href,
     },
     AB: function () {
       if (window.location.pathname.indexOf('about') > -1) {
-        $.getScript('/js/botui.js', function () {
+        $.getScript('https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js', function () {
           if (typeof(botui) == undefined && !botui.message) {
             bot_ui_ini()
           }
