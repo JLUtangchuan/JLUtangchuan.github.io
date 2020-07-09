@@ -25,7 +25,7 @@ menus:
   } }
   人文: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     笔记: {path: /categories/读书笔记/, fa: fa-th-list faa-bounce }, 
-    书单: {path: /bangumi/, fa: fa-book faa-vertical }, 
+    书单: {path: /reading/, fa: fa-book faa-vertical }, 
     # 歌单: {path: /music/, fa: fa-headphones },
     随记: {path: /categories/随记/, fa: fa-calendar-check-o  },
     诗词: {path: /categories/诗词/, fa: fa-file-powerpoint-o }

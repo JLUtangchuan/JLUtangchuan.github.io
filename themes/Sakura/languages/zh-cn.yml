@@ -43,11 +43,11 @@ insight:
 #category
 技术:
     zh: 技术向
-    en: Tech
+    en: Technology
     img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001218.jpg
 生活:
     zh: 生活
-    en: live
+    en: Life
     img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001707.jpg
 论文:
     zh: 论文笔记
@@ -60,15 +60,15 @@ insight:
 数学:
     zh: 数学
     en: Mathematics
-    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
-笔记:
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/pexels-photo-3768126.jpeg
+读书笔记:
     zh: 读书笔记
     en: Book Reading
-    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/pexels-photo-247899.jpeg
 随记:
     zh: 生活随记
     en: Diary
-    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/life.jpg
+    img: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200708015820.png
 诗词:
     zh: 诗词
     en: 古今中外

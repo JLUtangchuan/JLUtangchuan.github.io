@@ -139,7 +139,7 @@ menus:
   } }
   清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     书单: {path: /tags/悦读/, fa: fa-th-list faa-bounce }, 
-    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
+    番组: {path: /reading/, fa: fa-film faa-vertical }, 
     歌单: {path: /music/, fa: fa-headphones },
     图集: {path: /tags/图集/, fa: fa-photo }
   } }
@@ -276,13 +276,13 @@ photos: https://cdn.jsdelivr.net/gh/honjun/cdn@1.4/img/banner/comment.jpg
 
 ```yml
 ---
-layout: bangumi
-title: bangumi
+layout: reading
+title: reading
 comments: false
 date: 2019-02-10 21:32:48
 keywords:
 description:
-bangumis:
+readings:
   # 番组图片
   - img: https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg
   # 番组名
