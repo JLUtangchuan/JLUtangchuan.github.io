@@ -25,11 +25,17 @@ menus:
   } }
   人文: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     笔记: {path: /categories/读书笔记/, fa: fa-th-list faa-bounce }, 
-    书单: {path: /reading/, fa: fa-book faa-vertical }, 
+    书单: {path: /books/, fa: fa-book faa-vertical }, 
+    影视: {path: /movies/, fa: fa-film faa-vertical }, 
     # 歌单: {path: /music/, fa: fa-headphones },
     随记: {path: /categories/随记/, fa: fa-calendar-check-o  },
     诗词: {path: /categories/诗词/, fa: fa-file-powerpoint-o }
   } }
+  # 编程: {
+  #   {path: /categories/Python/, fa: fa-code },
+  #   {path: /categories/Tensorflow/, fa: fa-code },
+  #   {path: /categories/Tensorflow/, fa: fa-code },
+  # }
   留言板: { path: /comment/, fa: fa-pencil-square-o faa-tada }
   #友人帐: { path: /links/, fa: fa-link faa-shake }
   #赞赏: { path: /donate/, fa: fa-heart faa-pulse }

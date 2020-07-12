@@ -8,7 +8,7 @@ subtitle:
 description: 一只程序猿
 keywords:
 author: 唐川
-language: zh-cn
+language: zh-CN
 timezone:
 
 # URL
@@ -103,3 +103,19 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+
+douban:
+  user: 207320031
+  builtin: true
+  book:
+    title: '阅读'
+    quote: '我的书单'
+  movie:
+    title: '影视'
+    quote: '我关注的影视作品'
+  timeout: 10000
+
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
