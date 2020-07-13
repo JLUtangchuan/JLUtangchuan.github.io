@@ -1088,15 +1088,15 @@ var home = location.href,
         $.getScript('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js');
       }
     },
-    AB: function () {
-      if (window.location.pathname.indexOf('about') > -1) {
-        $.getScript('https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js', function () {
-          if (typeof(botui) == undefined && !botui.message) {
-            bot_ui_ini()
-          }
-        })
-      }
-    },
+    // AB: function () {
+    //   if (window.location.pathname.indexOf('about') > -1) {
+    //     $.getScript('https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js', function () {
+    //       if (typeof(botui) == undefined && !botui.message) {
+    //         bot_ui_ini()
+    //       }
+    //     })
+    //   }
+    // },
     VA: function () {
       if (!valine) {
         var valine = new Valine()
