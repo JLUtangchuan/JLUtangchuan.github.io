@@ -10,14 +10,8 @@ photos: https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001743.j
 <meting-js
   server="netease"
   type="playlist"
-  id="2731690811"
+  id="542358069"
   mutex="true">
 </meting-js>
 
-<meting-js
-  server="netease"
-  type="playlist"
-  id="419239189"
-  mutex="true">
-</meting-js>
 {% endraw %}
