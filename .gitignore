@@ -7,3 +7,5 @@ public/
 .deploy*/
 source/_posts/*
 source/_drafts/*
+scaffolds/*
+!scaffolds/post.md
