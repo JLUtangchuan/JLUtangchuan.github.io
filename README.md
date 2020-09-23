@@ -13,6 +13,13 @@
 7. 添加RSS订阅
 8. url中文转拼音
 
+## Note
+1. How to ues Douban?
+  
+   Use the following command
+   ```
+   hexo douban
+   ```
 
 ## Reference
 [Sakura主题中文文档](https://docs.hojun.cn/sakura/docs/)

@@ -107,7 +107,7 @@ feed:
 #DouBan
 douban:
   user: 207320031
-  builtin: true
+  builtin: false
   book:
     title: '阅读'
     quote: '我的书单'
