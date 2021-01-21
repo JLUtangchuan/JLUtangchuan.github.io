@@ -119,3 +119,6 @@ douban:
 permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
+
+admin:
+  deployCommand: hexo-d.cmd

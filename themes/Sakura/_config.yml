@@ -54,9 +54,10 @@ homePageSortType: -1
 homeArticleShown: 10
 # 背景图片 更好的修改
 bg:
-  - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704223421.jpg
-  - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/夜景.jpg
-  - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/城市夜景.jpg
+  - https://gitee.com/JLUtangchuan/imgbed/raw/master/img/samurai.jpg
+  # - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704223421.jpg
+  # - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/夜景.jpg
+  # - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/城市夜景.jpg
 
 # 背景图片样式 空 原图效果 filter-dim 阴影 filter-grid 横条 filter-dot 点点
 bgclass: filter-dim
@@ -112,7 +113,7 @@ aplayer:
   mutex: true
 
 # Valine
-valine: true
+valine: false
 v_appId: EYCWNriLnt4UiHM6LSnPFDcy-gzGzoHsz
 v_appKey: cJnnePWrUXTh8l9vUJ1qdsF6
 
