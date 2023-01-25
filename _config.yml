@@ -106,7 +106,7 @@ feed:
 
 #DouBan
 douban:
-  user: 207320031
+  id: 207320031
   builtin: false
   book:
     title: '阅读'

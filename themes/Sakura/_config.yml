@@ -4,7 +4,7 @@ siteName: 唐川的博客
 # favicon and site master avatar
 favicon: https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/favicon.png
 avatar: https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg
-url: http://blog.tangchuan.ink
+url: https://jlutangchuan.github.io/
 description: 唐川的博客
 cdn: # https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev
 pjax: 1
@@ -54,7 +54,7 @@ homePageSortType: -1
 homeArticleShown: 10
 # 背景图片 更好的修改
 bg:
-  - https://gitee.com/JLUtangchuan/imgbed/raw/master/img/samurai.jpg
+  - https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250055096.png
   # - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704223421.jpg
   # - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/夜景.jpg
   # - https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/城市夜景.jpg

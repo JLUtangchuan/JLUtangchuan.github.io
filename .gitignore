@@ -9,3 +9,4 @@ source/_posts/*
 source/_drafts/*
 scaffolds/*
 !scaffolds/post.md
+package-lock.json
