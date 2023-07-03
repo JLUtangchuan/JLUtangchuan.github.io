@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Self attention工作两篇 | 唐川的博客</title>
+  
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/font.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "唐川的博客";
+  mashiro_option.author_name = "唐川的博客";
+  mashiro_option.site_url = "https://jlutangchuan.github.io/";
+  mashiro_option.v_appId = "EYCWNriLnt4UiHM6LSnPFDcy-gzGzoHsz";
+  mashiro_option.v_appKey = "cJnnePWrUXTh8l9vUJ1qdsF6";
+  mashiro_option.mathjax = "1";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250055096.png".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://jlutangchuan.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>唐川的博客</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001632.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/JLUtangchuan/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233356.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=382522283" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233212.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/tang-chuan-5-26" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233139.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001857.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <!-- <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu"> -->
+    </div>
+  </div>
+  <!-- <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span> -->
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono"></span>
+            <span class="shironeko">唐川的博客</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-gears" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AE%BA%E6%96%87/">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                          论文
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          编程
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                          <i class="fa fa-diamond" aria-hidden="true"></i>
+                          数学
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    人文
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          影视
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                          随记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                          <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                          诗词
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301252219666.jpeg);" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301252219666.jpeg" data-src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301252219666.jpeg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Self attention工作两篇</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">唐川</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-1-16<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id=""><a href="#" class="headerlink" title=""></a>Self attention工作两篇</h1><p>最近在看自注意力的工作，要把这个加到现有的模型中，先记录一下两篇引用量比较高的工作</p>
+<h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h2><blockquote class="pullquote mindmap mindmap-sm"><ul>
+<li>Self Attention</li>
+<li>A Structured Self-Attentive Sentence Embedding</li>
+<li>Non-local Neural Networks</li>
+</ul>
+</blockquote>
+
+
+
+<h2 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h2><h3 id="A-Structured-Self-Attentive-Sentence-Embedding"><a href="#A-Structured-Self-Attentive-Sentence-Embedding" class="headerlink" title="A Structured Self-Attentive Sentence Embedding"></a>A Structured Self-Attentive Sentence Embedding</h3><p>2017 ICLR <strong>Bengio</strong></p>
+<h4 id="主要工作"><a href="#主要工作" class="headerlink" title="主要工作"></a>主要工作</h4><p>提出的模型主要是针对从词嵌入获得句子嵌入表示的，在这个过程中加入自注意力机制</p>
+<p>提出了一个新的通过<strong>自注意力机制</strong>提取（集成）句子embedding的方法，使用矩阵表示句子embedding</p>
+<p>sentence embedding matrix</p>
+<ul>
+<li>each row vector represent a different part of the sentence</li>
+<li>可以很方便地进行可视化（part与word的对应关系）</li>
+</ul>
+<p>task</p>
+<ol>
+<li>author profiling</li>
+<li>情感分类</li>
+<li>textual entailment</li>
+</ol>
+<h4 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h4><ol>
+<li>提出自注意力机制</li>
+<li>使用自注意力获取句子embedding</li>
+<li>提出一个特别的正则项</li>
+</ol>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>此前的提取sentence embedding的方法不是很好，这些方法大致可以分成两类：</p>
+<ol>
+<li>universal sentence embeddings usually trained by unsupervised learning: Skip-Thought vectors、ParagraphVector、recursive auto-encoders、Sequential Denoising Autoencoders、FastSent</li>
+<li>trained specifically for a certain task（这种方法得到的embedding一般来说比前者好），这种方法通常用max pooling或者mean pooling提取sentence embedding或者N-gram卷积或者用最后time step的输出作为句子的表示</li>
+</ol>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>self-attention</p>
+<img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/image-20210114160707811.png" style="zoom: 80%;" />
+
+<p>上图是注意力向量获取方法，拿到注意力向量之后对wordembedding进行加权⊕<br>$$<br>a&#x3D;\operatorname{softmax}(w_{s 2} \tanh (W_{s 1} H^{T}))<br>$$</p>
+<p>这里既可以输出一个attention vector，也可以输出multi-head attention<br>$$<br>A&#x3D;\operatorname{softmax}\left(W_{s 2} \tanh \left(W_{s 1} H^{T}\right)\right) \<br>M&#x3D;AH<br>$$<br>在加入multi-head attention之后，希望这些attention尽可能关注不同的内容，所以需要加入惩罚项进行学习</p>
+<blockquote>
+<p>The embedding matrix M can suffer from redundancy problems if the attention mechanism always provides similar summation weights for all the r hops. Thus we need a penalization term to encourage the diversity of summation weight vectors across different hops of attention.</p>
+</blockquote>
+<p>$$<br>P&#x3D;\left|\left(A A^{T}-I\right)\right|_{F}^{2}<br>$$</p>
+<p>这一项让各个注意力权重向量尽可能正交，同时自身范数尽可能为1</p>
+<h4 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h4><blockquote>
+<p><strong>注意力机制</strong> use attention mechanism on top of the CNN or LSTM model to introduce extra source of information to guide the extraction of sentence embedding</p>
+<p>This enables attention to be used in those cases when there are no extra inputs</p>
+</blockquote>
+<blockquote>
+<p>We hypothesize that carrying the semantics along all time steps of a recurrent model is relatively hard and not necessary</p>
+</blockquote>
+<hr>
+<h3 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h3><p>2018 CVPR, <strong>Ross Girshick Kaiming He</strong></p>
+<h4 id="主要工作-1"><a href="#主要工作-1" class="headerlink" title="主要工作"></a>主要工作</h4><p>和前面的论文不同，这篇论文使用注意力来做视觉的</p>
+<h5 id="摘录-1"><a href="#摘录-1" class="headerlink" title="摘录"></a>摘录</h5><blockquote>
+<p>Both convolutional and recurrent operations are building blocks that process one local neighborhood at a time</p>
+<p>Convolutional and recurrent operations both process a local neighborhood, either in space or time</p>
+<p>For image data, long-distance dependencies are modeled by the large receptive fields formed by deep stacks of convolutional operations</p>
+<p><strong>Repeating local operations has several limitations</strong>. First, it is computationally inefficient. Second, it causes optimization difficulties that need to be carefully addressed</p>
+<p>In this paper, we present non-local operations as a generic family of building blocks for capturing long-range dependencies.</p>
+<p>Our non-local operation computes the response at a position as a weighted sum of the features at all positions.</p>
+<p>Intuitively, a non-local operation computes the response at a position as a weighted sum of the features at all positions in the input feature maps.</p>
+</blockquote>
+<p>使用注意力机制来进行非局部特征融合</p>
+<p>task</p>
+<ol>
+<li>视频分类</li>
+<li>COCO 检测、分割、姿态估计</li>
+</ol>
+<h4 id="贡献-1"><a href="#贡献-1" class="headerlink" title="贡献"></a>贡献</h4><p>提出了一种非局部计算方法，提出模型 non-local neural networks</p>
+<p>非局部操作的优势：</p>
+<ul>
+<li>相比与堆叠的CNN、RNN，这种non-local 可以无视距离来提取long range dependencies</li>
+<li>结果上看比此前的方法更有效</li>
+<li>很容易加入到现有模型中</li>
+</ul>
+<h4 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h4><h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
+<li>卷积结构和循环结构都阻碍了全局信息的获取，注意力机制能帮助解决这个问题</li>
+</ul>
+<h5 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h5><p>从多个不同角度来讲相关工作，厉害厉害！</p>
+<ul>
+<li><p>Non-local image processing</p>
+<p> Non-local means方法</p>
+<p> A non-local algorithm for image denoising(classical non-local means method) BM3D</p>
+</li>
+<li><p>Graphical models</p>
+<p> 通过图来建模长距离依赖，代表方法有：CRF、GNN</p>
+</li>
+<li><p>Feedforward modeling for sequences</p>
+<p> 用卷积代替RNN做序列问题</p>
+</li>
+<li><p>Self-attention</p>
+<p> Attention is all you need在这个论文之前。。</p>
+<p> our work bridges self-attention for machine translation to the more general class of non-local filtering operations that are applicable to image and video problems in computer vision</p>
+</li>
+<li><p>Interaction networks（Relation Network）</p>
+<p> 用和自注意力不同的另一个视角看这种非局部操作</p>
+</li>
+</ul>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><p>$$<br>y_{i}&#x3D;\frac{1}{C(x)} \sum_{\forall j} f(x_{i}, x_{j}) g(x_{j})<br>$$</p>
+<p>任意两个位置i和j通过pairwise function算一下类似权重的东西，然后对于特征图中所有点进行这样的加权计算，然后再用C函数进行归一化，这里g函数应该是一个j位置的输入信号的表示向量</p>
+<p>和全连接的区别：fc的权重是网络学得的，non-local的权重$f(x_i,x_j)$是计算相应得到的；fc的权重是一个受位置固定的（对于任意两个位置，它们的fc权值是固定的），non-local的权重是与位置无关的（权值受具体输入信号影响）；fc要求输入的size固定</p>
+<p>具体的g函数可以是一个1x1的卷积操作</p>
+<p>pairwise function $f$可以有很多种</p>
+<p>Gaussian</p>
+<pre><code>f(x_i, x_j)=e^&#123;&#123;x_i&#125;^T x_j&#125;
+</code></pre>
+<p>Embedded Gaussian </p>
+<pre><code>f(x_i, x_j)=e^&#123;\theta(x_i)^T \phi(x_j)&#125;
+</code></pre>
+<p>在计算点积之前先乘个矩阵，这个可以用另一种与self-attention一致的方式表示：<br>$$<br>{y}&#x3D;\operatorname{softmax}(x^T W_{\theta}^T W_{\phi} x) g(x)<br>$$</p>
+<p>这个操作之后，相当于特征图中每个位置都有注意的区域的信息</p>
+<p>此外还有直接点乘、concatenation等方法</p>
+<h5 id="Non-local-Block"><a href="#Non-local-Block" class="headerlink" title="Non-local Block"></a>Non-local Block</h5><p>$$<br>z_i&#x3D;W_z y_i+x_i<br>$$</p>
+<p>这里使用残差链接构成一个模块，这个模块很容易加入到其他视觉模型中，相当于每个位置的注意力表示和原来的输入表示做了个运算（加法运算。。）</p>
+<p>计算图如下</p>
+<img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/image-20210118155505556.png" style="zoom:80%;" />
+
+
+
+
+<hr>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>感觉这两个工作的self-attention的大致思路是：</p>
+<ol>
+<li>首先有长距离依赖问题，需要<strong>有选择地</strong>获得某个位置对应的长距离依赖区域的表示</li>
+<li>用响应函数以及归一化组合来获得注意力得分</li>
+<li>用得分和得到的中间表示加权求和得到注意力表示</li>
+</ol>
+<p>第一篇工作直接用注意力表示，而第二个工作通过残差链接的方式将注意力表示和原始表示又做了一个计算</p>
+<p>第一篇论文不仅考虑了注意力得分的计算，还考虑了这个注意力需要加入惩罚项来防止每个学到的注意力权重都一样</p>
+<h5 id="自己的工作"><a href="#自己的工作" class="headerlink" title="自己的工作"></a>自己的工作</h5><p>首先先完成老师讲的文本端的self-attention，然后要考虑point到part这个过程如何用self-attention来拿到part embedding</p>
+<p>感觉还要看看点云上的注意力机制的论文：</p>
+<ul>
+<li>PVNet: 基于注意力嵌入式的点云与多视角图像融合感知网络 MM 2018</li>
+<li><strong>PCT: Point Cloud Transformer</strong>：清华团队将Transformer用到3D点云分割上后，效果好极了</li>
+<li>Relation-shape convolutional neural network for pointcloud  analysis</li>
+</ul>
+<p>貌似同期还有一篇Point Transform和PCT差不多？</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+        <!-- .entry-content -->
+        <!-- <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="null"></li>
+                <li class="wechat-code"><img src="null"></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/01/18/sheng-huo/gtd-ren-wu-guan-li/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                GTD任务管理</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/01/09/sheng-huo/cheng-xu-yuan-jian-kang-zuo-gu-shen-jing-tong/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                程序员健康-坐骨神经痛</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg" itemprop="image" alt="唐川" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">唐川</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+<!-- https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/latest.js -->
+<!-- https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML -->
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        // CONTENT_URL: '/content.json',
+        CONTENT_URL: 'https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 唐川<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001506.svg">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001537.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js"></script> -->
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">唐川的博客</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/JLUtangchuan" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-gears" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AE%BA%E6%96%87/">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  论文
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  编程
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                  <i class="fa fa-diamond" aria-hidden="true"></i>
+                  数学
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            人文
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  影视
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  随记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                  <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                  诗词
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="542358069"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

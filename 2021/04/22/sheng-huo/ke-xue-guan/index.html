@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">科学观 | 唐川的博客</title>
+  
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/font.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "唐川的博客";
+  mashiro_option.author_name = "唐川的博客";
+  mashiro_option.site_url = "https://jlutangchuan.github.io/";
+  mashiro_option.v_appId = "EYCWNriLnt4UiHM6LSnPFDcy-gzGzoHsz";
+  mashiro_option.v_appKey = "cJnnePWrUXTh8l9vUJ1qdsF6";
+  mashiro_option.mathjax = "1";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250055096.png".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://jlutangchuan.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>唐川的博客</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001632.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/JLUtangchuan/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233356.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=382522283" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233212.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/tang-chuan-5-26" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233139.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001857.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <!-- <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu"> -->
+    </div>
+  </div>
+  <!-- <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span> -->
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono"></span>
+            <span class="shironeko">唐川的博客</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-gears" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AE%BA%E6%96%87/">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                          论文
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          编程
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                          <i class="fa fa-diamond" aria-hidden="true"></i>
+                          数学
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    人文
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          影视
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                          随记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                          <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                          诗词
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg);" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200725134530.jpeg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      科学观</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">唐川</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-4-22<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id=""><a href="#" class="headerlink" title=""></a>科学观</h1><h2 id="科学与科学观"><a href="#科学与科学观" class="headerlink" title="科学与科学观"></a>科学与科学观</h2><h3 id="什么是科学？"><a href="#什么是科学？" class="headerlink" title="什么是科学？"></a>什么是科学？</h3><p><img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250129431.png"></p>
+<p>首先是自己对于科学的认识，科学是将外部世界现象进行解释以及预测，分为自然科学（理化生）、社会科学（经济、心理、社会学）、形式科学（数学、计算机科学、逻辑学）</p>
+<blockquote>
+<p><strong>Science</strong> is a systematic enterprise that builds and organizes knowledge in the form of testable explanations and predictions about the universe.</p>
+<p><strong>科学</strong>是一个建立在对宇宙进行可检验的解释和对客观事物的形式、组织等进行预测的有序的知识系统</p>
+</blockquote>
+<p>既然科学是对外部世界解释，对外部世界进行观察是必不可少的，因此就有了实验；要探索世界的规律，就要对实验进行分析得到唯象理论；唯象理论可以很好地解释现象，但是还不能称做系统的知识，于是，从唯象理论出发结合形式科学发展出理论框架（范式）</p>
+<p>以上是从现象出发的归纳推理出的科学——归纳主义科学观</p>
+<h3 id="科学观"><a href="#科学观" class="headerlink" title="科学观"></a>科学观</h3><p>西方科学哲学的几个解释：实证主义、逻辑实证主义、证伪主义</p>
+<p><em>实证主义</em>：相信归纳得出理论</p>
+<p><em>波普尔证伪主义</em>：科学理论无法通过归纳证实，但可证伪</p>
+<blockquote>
+<p>归纳主义科学观认为科学就是通过对事实进行归纳总结之后，所得到的理论。归纳主义科学观的诞生，是人类的一大进步，有力地推动了现代科学的发展。但问题在于，我们所观察到的事实未必就是正确的，而且归纳推理这种方法，本身在逻辑上也不够严谨，容易出问题。</p>
+</blockquote>
+<p>除了归纳主义的科学观，还有三种科学观，以下是A.F.查尔莫斯的四种科学观：</p>
+<ol>
+<li>归纳主义科学观——科学是通过归纳总结事实，所得到的理论</li>
+<li>证伪主义科学观——科学的本质，是可以被证伪。如果一套理论，不能被证伪，怎么说都对，那就不是科学。科学是可以被检验，而且可能被证明是错误的理论。（波普尔）</li>
+<li>结构科学观——科学不是某一个具体的理论，而是诸多理论组织的结构，在这个结构中所有理论都在一个框架中，这个框架，就是“范式”。科学依赖于“范式”这个框架，有没有这个框架，是衡量科学与非科学的标准。（马库斯）</li>
+<li>贝叶斯主义的科学观——科学理论的正确与否，是一个概率问题。我们可以根据新出现的证据，来描述事件发生的概率变化。</li>
+</ol>
+<p>对于证伪主义的科学观，存在的问题是如果一个理论由于目前的技术限制而暂时无法证伪，那么它是否应该算作科学？（否定理论先于观察的可能）</p>
+<p>结构主义科学观强调范式的科学，<em>在结构科学观看来，所有成熟的科学，都要有一个处在核心地位的基础理论。存在一个被广泛接受的“范式”，是科学研究和进步基础，也是区分科学与非科学的标志。</em>并且这种范式是不断更新的，新的科学理论可能会打破旧的范式（前科学—常规科学—反常—危机—科学革命—新的常规科学—…）</p>
+<h2 id="科学品味"><a href="#科学品味" class="headerlink" title="科学品味"></a>科学品味</h2><p><em>需要承认，科学品味与收到的教育、接触的机会、环境有关，同时我们也需要不断地思考这个科研价值、科研品味这些问题</em></p>
+<h3 id="什么是有价值的研究？"><a href="#什么是有价值的研究？" class="headerlink" title="什么是有价值的研究？"></a>什么是有价值的研究？</h3><p>可以讨论对于谁而言有价值</p>
+<ul>
+<li>对于社会来说：能够为社会整体创造巨大价值的研究更有意义</li>
+<li>对于自己来说：能够实现的研究、从中得到满足的研究更有意义</li>
+<li>对于研究方向来说：1. 完善一个理论 2. 发现一个理论的缺陷 3. 提出一个新的理论 都有意义</li>
+</ul>
+<h3 id="不同品味的研究"><a href="#不同品味的研究" class="headerlink" title="不同品味的研究"></a>不同品味的研究</h3><p><strong>陶哲轩：什么是好数学？</strong></p>
+<blockquote>
+<ol>
+<li>好的数学题解（比如在一个重要数学问题上的重大突破）；</li>
+<li>好的数学技巧（比如对现有方法的精湛运用，或开发新的工具）；</li>
+<li>好的数学理论（比如系统性地统一或推广一系列现有结果的概念框架或符号选择）；</li>
+<li>好的数学洞察（比如一个重要的概念简化，或对一个统一的原理、启示、模拟或主题的实现）；</li>
+<li>好的数学发现（比如对一个出人意料、引人入胜的新的数学现象、关联或反例的揭示）；</li>
+<li>好的数学应用（比如应用于物理、工程、计算机科学、统计等领域的重要问题，或将一个数学领域的结果应用于另一个数学领域）；</li>
+<li>好的数学展示（比如对新近数学课题的详尽而广博的概览，或一个清晰而动机合理的论证）；</li>
+<li>好的数学教学（比如能让他人更有效地学习及研究数学的讲义或写作风格，或对数学教育的贡献）；</li>
+<li>好的数学远见（比如富有成效的长远计划或猜想）；</li>
+<li>好的数学品位（比如自身有趣且对重要课题、主题或问题有影响的研究目标）；</li>
+<li>好的数学公关（比如向非数学家或另一个领域的数学家有效地展示数学成就）；</li>
+<li>好的元数学（比如数学基础、哲学、历史、学识或实践方面的进展）；</li>
+<li>严密的数学（所有细节都正确、细致而完整地给出）；</li>
+<li>美丽的数学（比如拉马努金的那些令人惊奇的恒等式；陈述简单漂亮、证明却很困难的结果）；</li>
+<li>优美的数学（比如保罗·厄多斯的“来自天书的证明”观念通过最少的努力得到困难的结果）；</li>
+<li>创造性的数学（比如本质上新颖的原创技巧、观点或各类结果）；</li>
+<li>有用的数学（比如会在某个领域的未来工作中被反复用到的引理或方法）；</li>
+<li>强有力的数学（比如与一个已知反例相匹配的敏锐的结果，或从一个看起来很弱的假设推出一个强得出乎意料的结论）；</li>
+<li>深刻的数学（比如一个明显非平凡的结果，比如理解一个无法用更初等的方法接近的微妙现象）；</li>
+<li>直观的数学（比如一个自然的、容易形象化的论证）；</li>
+<li>明确的数学（比如对某一类型的所有客体的分类；对一个数学课题的结论）</li>
+</ol>
+</blockquote>
+<h3 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h3><p><strong>如何培养良好品味？</strong></p>
+<ol>
+<li>Seek out others with good taste, 寻找那些有不错学术品味的人</li>
+<li>Read trend-setting conference proceedings, and develop opinions about research problems and trends in your area, 从最杰出的工作中模仿学习，有筛选地学习</li>
+<li>Sample and experiment with abandon, 不断地尝试新的内容</li>
+<li>Keep a list of ideas that you like and exchange your favorite ideas with colleagues, 多记录、多交流</li>
+</ol>
+<p>除此之外，还需要自己去思考什么样的方向、问题、论文更有价值</p>
+<ol>
+<li>问题的重要性</li>
+<li>看一个工作的结论的好坏，来评价工作的价值</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://greatresearch.org/2013/09/13/cultivating-your-research-taste/">https://greatresearch.org/2013/09/13/cultivating-your-research-taste/</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.theexclusive.org/2014/12/taste-in-research-and-paradox-of.html">http://www.theexclusive.org/2014/12/taste-in-research-and-paradox-of.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://en.wikisource.org/wiki/On_Taste">http://en.wikisource.org/wiki/On_Taste</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56525492/answer/1039537646">一个人的科研品位会对自己的学术道路有什么影响？ - 想飞的猪的回答 - 知乎</a></li>
+<li>What is This Thing Called Science</li>
+</ul>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+        <!-- .entry-content -->
+        <!-- <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="null"></li>
+                <li class="wechat-code"><img src="null"></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/04/25/ji-zhu/bian-cheng/mac-os-shang-an-zhuang-xampp/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/paperbg.jpg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/paperbg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/paperbg.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Mac OS上安装XAMPP</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/02/01/ji-zhu/li-lun/lun-wen/bottom-up-and-top-down-attention-for-image-captioningand-visual-question-answering/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301252219666.jpeg" data-src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301252219666.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301252219666.jpeg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Bottom-Up and Top-Down Attention for Image Captioningand Visual Question Answering</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg" itemprop="image" alt="唐川" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">唐川</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+<!-- https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/latest.js -->
+<!-- https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML -->
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        // CONTENT_URL: '/content.json',
+        CONTENT_URL: 'https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 唐川<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001506.svg">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001537.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js"></script> -->
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">唐川的博客</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/JLUtangchuan" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-gears" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AE%BA%E6%96%87/">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  论文
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  编程
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                  <i class="fa fa-diamond" aria-hidden="true"></i>
+                  数学
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            人文
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  影视
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  随记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                  <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                  诗词
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="542358069"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

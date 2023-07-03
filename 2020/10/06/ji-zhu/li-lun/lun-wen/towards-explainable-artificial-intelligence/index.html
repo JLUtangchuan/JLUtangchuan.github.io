@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Towards Explainable Artificial Intelligence | 唐川的博客</title>
+  
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/font.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "唐川的博客";
+  mashiro_option.author_name = "唐川的博客";
+  mashiro_option.site_url = "https://jlutangchuan.github.io/";
+  mashiro_option.v_appId = "EYCWNriLnt4UiHM6LSnPFDcy-gzGzoHsz";
+  mashiro_option.v_appKey = "cJnnePWrUXTh8l9vUJ1qdsF6";
+  mashiro_option.mathjax = "1";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250055096.png".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://jlutangchuan.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>唐川的博客</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001632.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/JLUtangchuan/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233356.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=382522283" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233212.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/tang-chuan-5-26" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233139.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001857.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <!-- <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu"> -->
+    </div>
+  </div>
+  <!-- <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span> -->
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono"></span>
+            <span class="shironeko">唐川的博客</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-gears" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AE%BA%E6%96%87/">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                          论文
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          编程
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                          <i class="fa fa-diamond" aria-hidden="true"></i>
+                          数学
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    人文
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          影视
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                          随记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                          <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                          诗词
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20201006205814.png);" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20201006205814.png" data-src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20201006205814.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Towards Explainable Artificial Intelligence</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">唐川</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-10-6<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id=""><a href="#" class="headerlink" title=""></a>Towards Explainable Artificial Intelligence</h1><h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><blockquote>
+<p>(Deep Learining) not providing any information about what exactly makes them arrive at their predictions</p>
+</blockquote>
+<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>AI遇到的挑战（对抗样本不鲁棒、缺少可解释性）</p>
+<ul>
+<li>the lack of robustness to adversarial  attacks which pose a severe security risk in application such as autonomous driving</li>
+<li>the lack of transparency and explainability, which reduces the trust in and the verifiability of the decisions made by an AI system</li>
+</ul>
+<p>本文主要想讨论第二点：<em>the lack of transparency and explainability</em></p>
+<p>可解释性不仅能向人们解释AI做出决策的原因，更可能的是产生新的知识。</p>
+<blockquote>
+<p>The remainder of the paper is organized as follows. </p>
+<p>Section 1.2 discusses <strong>the need for transparency and trust in AI</strong>. </p>
+<p>Section 1.3 comments on the <strong>different types of explanations and their respective information content</strong> and use in practice. </p>
+<p><strong>Recent techniques of explainable AI</strong> are briefly summarized in Sect. 1.4, including methods which rely on simple surrogate functions, frame explanation as an optimization problem, access the model’s gradient or make use of the model’s internal structure. </p>
+<p>The question of <strong>how to objectively evaluate the quality of explanations</strong> is addressed in Sect. 1.5. </p>
+<p>The paper concludes in Sect. 1.6 with a discussion on general <strong>challenges in the field of explainable AI</strong>.</p>
+</blockquote>
+<h4 id="二、Need-for-Transparency-and-Trust-in-AI"><a href="#二、Need-for-Transparency-and-Trust-in-AI" class="headerlink" title="二、Need for Transparency and Trust in AI"></a>二、Need for Transparency and Trust in AI</h4><p>现实需求</p>
+<h5 id="Case-1-当AI发生判断错误时候，需要可解释性来告诉我们为什么AI会判断出错"><a href="#Case-1-当AI发生判断错误时候，需要可解释性来告诉我们为什么AI会判断出错" class="headerlink" title="Case 1:当AI发生判断错误时候，需要可解释性来告诉我们为什么AI会判断出错"></a>Case 1:当AI发生判断错误时候，需要可解释性来告诉我们为什么AI会判断出错</h5><p><strong>Clever Hans</strong></p>
+<p>AI在学习中，会将一些<strong>共现信息</strong>当作识别对象；比如：看到水就识别出船只、看到铁轨就识别出火车、甚至看到水印就识别出马</p>
+<blockquote>
+<p>The occurrence of the copyright tags in horse images is a clear artifact in the dataset, which had gone unnoticed to the organizers and participants of the challenge for many years.</p>
+</blockquote>
+<p>这说明数据对于AI学习的影响非常大，而且我们很难在一开始去消除训练数据中所有的共现信息。</p>
+<p>对于极端case，可解释性能帮助我们展示检测器的misbehaviour</p>
+<h5 id="Case-2-可解释性帮助提升模型的可信度"><a href="#Case-2-可解释性帮助提升模型的可信度" class="headerlink" title="Case 2: 可解释性帮助提升模型的可信度"></a>Case 2: 可解释性帮助提升模型的可信度</h5><p>如何提升模型可信度？</p>
+<ol>
+<li>提供决策的原因、过程</li>
+<li>更好的与人进行交互（explanations help to build trust in a relationship between humans）</li>
+</ol>
+<h5 id="Case3-解释是洞察新事物的先决条件"><a href="#Case3-解释是洞察新事物的先决条件" class="headerlink" title="Case3: 解释是洞察新事物的先决条件"></a>Case3: 解释是洞察新事物的先决条件</h5><blockquote>
+<p>AI systems have the potential to discover patterns in data, which are not accessible to the human expert. </p>
+</blockquote>
+<p>以围棋为例，可以通过可解释AI发现新的决策、新的见解。</p>
+<h5 id="Case4-可解释性可以为AI立法、伦理做支撑"><a href="#Case4-可解释性可以为AI立法、伦理做支撑" class="headerlink" title="Case4: 可解释性可以为AI立法、伦理做支撑"></a>Case4: 可解释性可以为AI立法、伦理做支撑</h5><ul>
+<li>Anti-discrimination and fairness aspects</li>
+<li>要求AI在做出判断时需要给出决策原因（增强AI模型的透明度）</li>
+</ul>
+<h4 id="三、解释方法"><a href="#三、解释方法" class="headerlink" title="三、解释方法"></a>三、解释方法</h4><p>从信息内容、接收者、目的三个角度进行AI可解释性研究</p>
+<h5 id="1-Recipient"><a href="#1-Recipient" class="headerlink" title="1 Recipient"></a>1 Recipient</h5><p>向不同的对象进行解释需要准备不同的内容以及详细程度，这里想讨论XAI模型向哪些对象进行解释。</p>
+<ul>
+<li>对于图片分类任务，给用户解释判断原因可能只需要高亮目标区域</li>
+<li>对于模型的开发人员，可能需要展示尽可能多的更有用、更细粒度的信息；因为只有这些完整的信息才能提供对模型功能的详细了解。</li>
+</ul>
+<h5 id="2-Information-Content"><a href="#2-Information-Content" class="headerlink" title="2 Information Content"></a>2 Information Content</h5><p>介绍了四种不同的解释方式</p>
+<ul>
+<li><p>Explaining learned representations</p>
+<p> 比如分析训练好的网络中神经元的可解释性</p>
+<p> 比如对于分类模型，可以通过让模型生成该类别原型图片来分析模型是否真正学到了判别此类别</p>
+</li>
+<li><p>Explaining individual predictions</p>
+<p> heatmaps visualizing（highlighting the most sensitive parts of an input）</p>
+<p> <a target="_blank" rel="noopener" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0130140">Layer-wise Relevance Propagation(LRP)</a></p>
+</li>
+<li><p>Explaining model behavour</p>
+<p> 解释模型的整体表现，可以对全部个体的解释做统计，进而得出对模型表现的更普遍的分析</p>
+</li>
+<li><p>Explaining with representative examples</p>
+<p> 从训练样本集中选择有代表性的样本，这种类型的解释对于更好地理解训练数据集以及它如何影响模型是有用的；此外，这些代表性的样本可以潜在地帮助识别数据中的偏差，使模型对训练数据集的变化更加稳健。</p>
+</li>
+</ul>
+<h5 id="3-Role"><a href="#3-Role" class="headerlink" title="3 Role"></a>3 Role</h5><p>在XAI中，有一个问题是解释方法与我们真正想探究的内容不一致，因此本节主要想从这两个观点进行分析：</p>
+<ul>
+<li>某种解释方法的意图（what specific question does the explanation answer?）</li>
+<li>我们真正想探究的问题（what do we want to use the explanation for?）</li>
+</ul>
+<blockquote>
+<p>Explanations are relative and it makes a huge difference whether their intent is to explain the prediction as is, whether they aim to visualize what the model “thinks” about a specific class, or whether they explain the prediction relative to another alternative.</p>
+</blockquote>
+<p>此外，解释的目的还可以是提升模型的性能（提升判别能力、模型压缩、修剪）</p>
+<h4 id="四、可解释模型方法"><a href="#四、可解释模型方法" class="headerlink" title="四、可解释模型方法"></a>四、可解释模型方法</h4><p>介绍了四种模型可解释方法</p>
+<ol>
+<li><p>利用替代模型进行可解释性分析</p>
+<p>用可解释性高的模型解释黑盒模型（LIME）</p>
+</li>
+<li><p>可视化局部扰动</p>
+<p>包括三种：基于梯度信息、基于局部扰动、基于优化的方法</p>
+<p>基于梯度信息的可解释性分析方法（如灵敏度分析）存在的问题：gradient shattering and explanation discontinuities</p>
+<p>基于模型扰动的可解释性分析：很难做出进一步的解释</p>
+</li>
+<li><p>基于传播的方法</p>
+<p>代表工作：Layer-wise Relevance Propagation (LRP) 、Deconvolution、Guided Backprogagation</p>
+<p>LRP不受gradient shattering and explanation discontinuities影响</p>
+</li>
+<li><p>元解释</p>
+<p>元解释从个体解释发展而来</p>
+<p>代表工作：spectral relevance analysis（SpRAy）、network dissection</p>
+<p>clustering individual heatmaps</p>
+</li>
+</ol>
+<h4 id="五、可解释性评价与度量"><a href="#五、可解释性评价与度量" class="headerlink" title="五、可解释性评价与度量"></a>五、可解释性评价与度量</h4><ul>
+<li>measure for heatmap quality（perturbation analysis）<ul>
+<li>根据扰动造成置信度掉点的多少来进行分析</li>
+<li>pointing game，通过解释对象的位置来评估模型的判别能力</li>
+</ul>
+</li>
+</ul>
+<h4 id="六、Challenges-and-Open-Questions"><a href="#六、Challenges-and-Open-Questions" class="headerlink" title="六、Challenges and Open Questions"></a>六、Challenges and Open Questions</h4><ul>
+<li><p>heatmaps computed with today’s explanation methods visualize “first-order” information</p>
+<p> 意思是当前的一些工作都只是将特征和语义信息对应，但是缺少对于特征之间的关系的分析</p>
+</li>
+<li><p>the low abstraction level of explanations</p>
+<p> 缺少对于高语义信息的解释，比如热图只是解释了某像素对于判别是重要的，缺少更高语义内容的解释</p>
+</li>
+<li><p>explanations beyond visualization</p>
+</li>
+<li><p>人机交互</p>
+</li>
+<li><p>AI可解释性理论</p>
+</li>
+</ul>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+        <!-- .entry-content -->
+        <!-- <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="null"></li>
+                <li class="wechat-code"><img src="null"></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/10/06/shi-ci/jin-qi-kan-dao-de-san-shou-xiao-shi-10-06/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/1594299805840.jpg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/1594299805840.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/1594299805840.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                近期看到的三首小诗(10.06)</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/09/23/ji-zhu/li-lun/ji-qi-xue-xi/prml-hui-gui-xian-xing-mo-xing/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200808180919.png" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200808180919.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200808180919.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                PRML-回归线性模型</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg" itemprop="image" alt="唐川" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">唐川</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+<!-- https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/latest.js -->
+<!-- https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML -->
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        // CONTENT_URL: '/content.json',
+        CONTENT_URL: 'https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 唐川<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001506.svg">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001537.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js"></script> -->
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">唐川的博客</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/JLUtangchuan" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-gears" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AE%BA%E6%96%87/">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  论文
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  编程
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                  <i class="fa fa-diamond" aria-hidden="true"></i>
+                  数学
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            人文
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  影视
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  随记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                  <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                  诗词
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="542358069"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

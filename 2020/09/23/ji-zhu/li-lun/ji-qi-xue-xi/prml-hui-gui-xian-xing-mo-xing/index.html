@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">PRML-回归线性模型 | 唐川的博客</title>
+  
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/font.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "唐川的博客";
+  mashiro_option.author_name = "唐川的博客";
+  mashiro_option.site_url = "https://jlutangchuan.github.io/";
+  mashiro_option.v_appId = "EYCWNriLnt4UiHM6LSnPFDcy-gzGzoHsz";
+  mashiro_option.v_appKey = "cJnnePWrUXTh8l9vUJ1qdsF6";
+  mashiro_option.mathjax = "1";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250055096.png".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://jlutangchuan.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>唐川的博客</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001632.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/JLUtangchuan/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233356.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=382522283" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233212.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/tang-chuan-5-26" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233139.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001857.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <!-- <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu"> -->
+    </div>
+  </div>
+  <!-- <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span> -->
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono"></span>
+            <span class="shironeko">唐川的博客</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-gears" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AE%BA%E6%96%87/">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                          论文
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          编程
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                          <i class="fa fa-diamond" aria-hidden="true"></i>
+                          数学
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    人文
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          影视
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                          随记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                          <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                          诗词
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200808180919.png);" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200808180919.png" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200808180919.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      PRML-回归线性模型</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">唐川</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-23<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id=""><a href="#" class="headerlink" title=""></a>PRML-回归线性模型</h1><ul>
+<li>PRML<ul>
+<li>回归线性模型</li>
+</ul>
+</li>
+</ul>
+<p>本章主要将的是使用线性模型进行回归的问题，首先讲线性模型、回归问题的基本概念，其中涉及基函数等重要概念；接下来从几个不同的视角来看线性回归模型求解算法（最小二乘）：<strong>极大似然估计</strong>、<strong>几何视角</strong>；接下来主要讨论模型的复杂度这个问题，从频率学派和贝叶斯学派分开讨论，对于频率学派来说，通过对于目标函数<strong>期望损失</strong>的分解（<strong>偏置-方差分解</strong>），得到模型的复杂度变化对于偏置、方差的影响。</p>
+<p>接下来讨论贝叶斯线性回归，但介绍此内容之前，先介绍了正则化和顺序学习方面的内容，这部分实际和贝叶斯线性回归也有密切的关系。贝叶斯线性回归的一个重要问题实际上还是先验的确定，这里实际上是为了数学上的简洁性，把先验定为零均值的高斯分布（也就是先验不是通过数据确定的）；接着又从数据的角度分析贝叶斯线性回归模型的不确定性，“预测的不确定性依赖于输入变量，数据点邻域处的不确定性小”。</p>
+<p>接下来“等价核”、贝叶斯模型比较证据近似等内容先略过，后续再补充。</p>
+<p>有待学习的知识点：</p>
+<ul>
+<li>概率分布（CH02）</li>
+<li>共轭先验</li>
+<li>边缘似然</li>
+</ul>
+<hr>
+<h2 id="主要知识笔记"><a href="#主要知识笔记" class="headerlink" title="主要知识笔记"></a>主要知识笔记</h2><h3 id="一、线性回归模型介绍"><a href="#一、线性回归模型介绍" class="headerlink" title="一、线性回归模型介绍"></a>一、线性回归模型介绍</h3><h4 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h4><h4 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h4><h4 id="基函数"><a href="#基函数" class="headerlink" title="基函数"></a>基函数</h4><h3 id="二、线性回归模型学习算法"><a href="#二、线性回归模型学习算法" class="headerlink" title="二、线性回归模型学习算法"></a>二、线性回归模型学习算法</h3><h4 id="1-直观：最小二乘估计"><a href="#1-直观：最小二乘估计" class="headerlink" title="1.直观：最小二乘估计"></a>1.直观：最小二乘估计</h4><p><strong>误差函数与损失函数</strong></p>
+<blockquote>
+<p>损失函数在第一章决策论中提出一个最小化期望损失$\mathbb{E}[L]&#x3D;\sum_{k} \sum_{j} \int_{R_{j}} L_{k j} p\left(\mathbf{x}, C_{k}\right) \mathrm{d} \mathbf{x}$；在推断中，只需要寻找目标变量的最大后验概率$\mathbf{argmax}<em>{k} L</em>{k j} p\left(C_{k} \mid \mathbf{x}\right)$。</p>
+<p>误差函数是手工设计的目标函数，通常将其设计为与MLE有等价解的函数。</p>
+</blockquote>
+<p>在1.5.5回归问题的损失函数一节中，对于回归问题，从使用了平方损失作为损失函数，并分解如下（这个期望损失可以看作自变量$y$的函数，理想情况下当取得最优解是第一项为0，但实际数据集是指定的，因此第一项无法完全消除，后续会将第一项分解，只剩下关于最优预测与gt的项）<br>$$<br>h(\mathbf{x})&#x3D;\mathbb{E}[t \mid \mathbf{x}]&#x3D;\int t p(t \mid \mathbf{x}) \mathrm{d} t<br>$$</p>
+<p>$$<br>\mathbb{E}[L]&#x3D;\int{y(\mathbf{x})-\mathbb{E}[t \mid \mathbf{x}]}^{2} p(\mathbf{x}) \mathrm{d} \mathbf{x}+\int\int{\mathbb{E}[t \mid \mathbf{x}]-t}^{2} p(\mathbf{x},t) \mathrm{d} \mathbf{x} \mathrm{d} t<br>$$<br>大概可以看到总的损失为数据的噪声方差损失与模型的偏差平方和损失构成。</p>
+<p>平方和误差函数和平方损失函数之间一个是面向数据点做求和，另一个是理想的对联合分布积分，两者实际上是一个东西在两个侧重点的不同叫法。</p>
+<p>第一章中的多项式拟合问题中，使用了最小化平方和误差函数作为确定参数的目标函数，这里将从几何角度和概率角度解释这个误差函数</p>
+<p>$$<br>E_{D}(\mathbf{w})&#x3D;\frac{1}{2} \sum_{n&#x3D;1}^{N}\left{t_{n}-\mathbf{w}^{\mathrm{T}} \boldsymbol{\phi}\left(\mathbf{x}_{n}\right)\right}^{2}<br>$$</p>
+<h4 id="2-概率解释：高斯噪声假设下的极大似然估计"><a href="#2-概率解释：高斯噪声假设下的极大似然估计" class="headerlink" title="2.概率解释：高斯噪声假设下的极大似然估计"></a>2.概率解释：高斯噪声假设下的极大似然估计</h4><p>假设数据集为$(\mathbf{X,T})$，目标变量t由输入变量的线性函数$y(x,w)$给出，且假设数据服从高斯噪声$\epsilon \sim N(0,\beta^{-1})$<br>$$<br>t&#x3D;y(x,w)+\epsilon<br>$$</p>
+<p>对于一个新的输入变量，目标变量可以用<strong>条件均值</strong>来估计<br>$$<br>\mathbb{E}[t \mid \mathbf{x}]&#x3D;\int t p(t \mid \mathbf{x}) \mathrm{d} t&#x3D;y(\mathbf{x}, \mathbf{w})<br>$$<br>利用极大似然估计来确定参数，首先写出似然函数，取对数后有<br>$$<br>\begin{aligned}<br>\ln p(\mathbf{t} \mid \mathbf{w}, \beta) &amp;&#x3D;\sum_{n&#x3D;1}^{N} \ln \mathcal{N}\left(t_{n} \mid \mathbf{w}^{\mathrm{T}} \boldsymbol{\phi}\left(\mathbf{x}<em>{n}\right), \beta^{-1}\right) \<br>&amp;&#x3D;\frac{N}{2} \ln \beta-\frac{N}{2} \ln (2 \pi)-\beta \frac{1}{2} \sum</em>{n&#x3D;1}^{N}\left{t_{n}-\mathbf{w}^{\mathrm{T}} \boldsymbol{\phi}\left(\mathbf{x}_{n}\right)\right}^{2}<br>\end{aligned}<br>$$</p>
+<p>记误差函数为</p>
+<p>$$<br>E_{D}(\mathbf{w})&#x3D;\frac{1}{2} \sum_{n&#x3D;1}^{N}\left{t_{n}-\mathbf{w}^{\mathrm{T}} \boldsymbol{\phi}\left(\mathbf{x}_{n}\right)\right}^{2}<br>$$</p>
+<p>算出最小平方和误差函数和极大似然估计的解析解都为<br>$$<br>\mathbf{w}_{\mathrm{ML}}&#x3D;\left(\mathbf{\Phi}^{\mathrm{T}} \mathbf{\Phi}\right)^{-1} \mathbf{\Phi}^{\mathrm{T}} \mathbf{t}<br>$$<br>其中$\Phi$为设计矩阵形式如下</p>
+<p><img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200913205211.png"></p>
+<p>因此，最小平方和误差函数的解析解和高斯噪声下极大似然估计算出的解结果相同</p>
+<h4 id="3-几何解释：最小平方和的几何描述"><a href="#3-几何解释：最小平方和的几何描述" class="headerlink" title="3.几何解释：最小平方和的几何描述"></a>3.几何解释：最小平方和的几何描述</h4><p>N个数据点的数据集（每个数据点有d个维度）看作N维空间中的d个向量，这d个向量可以看作基向量，形成张成空间S，N个目标变量T同样构成一个向量t；最小平方和误差函数等于S到t的距离的平方，相当于原问题就是找t在S上的投影。</p>
+<h3 id="三、顺序学习-amp-正则项"><a href="#三、顺序学习-amp-正则项" class="headerlink" title="三、顺序学习&amp;正则项"></a>三、顺序学习&amp;正则项</h3><h4 id="1-顺序学习"><a href="#1-顺序学习" class="headerlink" title="1.顺序学习"></a>1.顺序学习</h4><p>有两个顺序学习，一种是频率下的顺序学习（SGD），好处有二，一是顺序学习可以做成实时算法，数据边采集边学习；二是当解析解不好计算（数据量高的时候由于矩阵计算复杂度也大导致计算时空开销巨大）时可以采用顺序学习降低计算复杂度。另一种是贝叶斯下的顺序学习，就是不断获取新的evidence并更新posterior。</p>
+<ul>
+<li>顺序学习<ul>
+<li><p>频率视角下的参数更新</p>
+<ul>
+<li>参考SGD算法</li>
+<li>优点<ul>
+<li>实时</li>
+<li>传统算法在数据量大的时候矩阵运算时空开销非常巨大</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>贝叶斯视角下的参数更新</p>
+<ul>
+<li>不断获取新的evidence并更新posterior</li>
+</ul>
+<p> <img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200921232015.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-正则项"><a href="#2-正则项" class="headerlink" title="2.正则项"></a>2.正则项</h4><p><strong>正则化方法</strong></p>
+<ul>
+<li><p>使用正则的目的是控制过拟合，降低模型复杂度</p>
+</li>
+<li><p>常见的正则有L1、L2、L1L2</p>
+</li>
+<li><p>正则化方法有时被称为权值衰减，因为其倾向于让权值向零方向衰减</p>
+</li>
+</ul>
+<p><strong>线性回归模型正则化</strong></p>
+<p>在误差函数中加入正则项<br>$$<br>E(\mathbf{w})&#x3D;\frac{1}{2} \sum_{n&#x3D;1}^{N}\left{t_{n}-\mathbf{w}^{\mathrm{T}} \boldsymbol{\phi}\left(\mathbf{x}<em>{n}\right)\right}^{2}+\frac{\lambda}{2} \sum</em>{j&#x3D;1}^{M}\left|\mathbf{w}_{j}\right|^{q}<br>$$</p>
+<ul>
+<li>$q&#x3D;1$时为Lasso回归：趋向于形成更稀疏的模型（模型复杂度降低程度大）</li>
+<li>$q&#x3D;2$时为Ridge回归</li>
+</ul>
+<p>此外，正则化方法也可以用贝叶斯线性回归来解释，将在后续内容中讨论</p>
+<h3 id="四、模型复杂度分析"><a href="#四、模型复杂度分析" class="headerlink" title="四、模型复杂度分析"></a>四、模型复杂度分析</h3><p>这部分是分析期望损失的构成以及控制模型复杂度对于结果的影响</p>
+<h4 id="偏置-方差分解"><a href="#偏置-方差分解" class="headerlink" title="偏置-方差分解"></a>偏置-方差分解</h4><p>此前对于期望损失的分解如下<br>$$<br>\mathbb{E}[L]&#x3D;\int{y(\mathbf{x})-\mathbb{E}[t \mid \mathbf{x}]}^{2} p(\mathbf{x}) \mathrm{d} \mathbf{x}+\int\int{\mathbb{E}[t \mid \mathbf{x}]-t}^{2} p(\mathbf{x},t) \mathrm{d} \mathbf{x} \mathrm{d} t<br>$$<br>对于特定数据集D，第一项还可以展开成</p>
+<img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200921213311.png" style="zoom: 50%;" />
+
+<p>重新分解期望损失</p>
+<img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200921223101.png" style="zoom:50%;" />
+
+<p>期望损失分解成3部分：基于特定数据集的期望预测模型与最优预测模型之间偏差的平方、特定数据集内预测模型的方差、最优预测与gt形成的噪声。</p>
+<p>当模型复杂度变化时，期望损失也会发生变化：</p>
+<ul>
+<li><p>模型复杂度升高，方差项升高</p>
+</li>
+<li><p>模型复杂度升高，偏差平方项降低</p>
+<p> <img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200921223943.png"></p>
+</li>
+</ul>
+<h4 id="贝叶斯线性回归"><a href="#贝叶斯线性回归" class="headerlink" title="贝叶斯线性回归"></a>贝叶斯线性回归</h4><p>贝叶斯线性回归中，我们用概率来建模参数的更新过程，求的是关于X,y的参数最大后验概率；在之前的线性回归中，用条件概率、条件期望分析的是对目标变量的估计，也可以认为求关于X,y的极大似然。也会引出使用训练数据本身确定模型复杂度的自动化方法。</p>
+<p>极大后验概率的</p>
+<ul>
+<li>正则化操作的另一种解释</li>
+<li>参数分布先验</li>
+</ul>
+<p>贝叶斯线性回归中，假设参数是随机变量，服从某一分布，根据共轭先验参数服从高斯分布，为了数学上的形式简洁，假设参数服从0均值、各向同性的高斯分布，计算MAP</p>
+<img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200921231156.png" style="zoom:50%;" />
+
+<p>得到与正则化一致的结果<br>$$<br>\begin{aligned}<br>\mathbf{m}<em>{N} &amp;&#x3D;\mathbf{S}</em>{N}\left(\mathbf{S}<em>{0}^{-1} \mathbf{m}</em>{0}+\beta \mathbf{\Phi}^{\mathrm{T}} \mathbf{t}\right) \<br>\mathbf{S}<em>{N}^{-1} &amp;&#x3D;\mathbf{S}</em>{0}^{-1}+\beta \mathbf{\Phi}^{\mathrm{T}} \mathbf{\Phi}<br>\end{aligned}<br>$$</p>
+<p>以上是对于参数$w$的估计部分，现在需要考虑预测$p(t|\mathbf{t},\alpha,\beta)$的分布情况<br>$$<br>p(t|\mathbf{t},\alpha,\beta)&#x3D;\int p(t|w,\beta)p(w|\mathbf{t},\alpha,\beta){\rm d} w &#x3D; \mathcal{N}\left(t \mid \mathbf{m}<em>{N}^{\mathrm{T}} \boldsymbol{\phi}(\mathbf{x}), \sigma</em>{N}^{2}(\mathbf{x})\right)<br>$$</p>
+<p>可以给出输入空间中任一点的协方差估计<br>$$<br>\sigma_{N}^{2}(\mathbf{x})&#x3D;\frac{1}{\beta}+\phi(\mathbf{x})^{\mathrm{T}} \mathbf{S}_{N} \phi(\mathbf{x})<br>$$<br>这个估计可以视作模型在此处的不确定性，直观地讲，一个地方的数据点越密集、同时这些数据点之间的方差越小，该位置的不确定性越小。</p>
+<p><img src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200923220032.png"></p>
+<hr>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+        <!-- .entry-content -->
+        <!-- <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="null"></li>
+                <li class="wechat-code"><img src="null"></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/10/06/ji-zhu/li-lun/lun-wen/towards-explainable-artificial-intelligence/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20201006205814.png" data-src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20201006205814.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20201006205814.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Towards Explainable Artificial Intelligence</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/09/08/ji-zhu/bian-cheng/tensorflow-xue-xi-2-layer/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133246.jpeg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133246.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133246.jpeg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Tensorflow学习 - 2.Layer</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg" itemprop="image" alt="唐川" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">唐川</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+<!-- https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/latest.js -->
+<!-- https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML -->
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        // CONTENT_URL: '/content.json',
+        CONTENT_URL: 'https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 唐川<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001506.svg">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001537.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js"></script> -->
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">唐川的博客</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/JLUtangchuan" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-gears" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AE%BA%E6%96%87/">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  论文
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  编程
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                  <i class="fa fa-diamond" aria-hidden="true"></i>
+                  数学
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            人文
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  影视
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  随记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                  <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                  诗词
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="542358069"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

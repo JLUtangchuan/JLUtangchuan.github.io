@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">python可视化 | 唐川的博客</title>
+  
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/font.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "唐川的博客";
+  mashiro_option.author_name = "唐川的博客";
+  mashiro_option.site_url = "https://jlutangchuan.github.io/";
+  mashiro_option.v_appId = "EYCWNriLnt4UiHM6LSnPFDcy-gzGzoHsz";
+  mashiro_option.v_appKey = "cJnnePWrUXTh8l9vUJ1qdsF6";
+  mashiro_option.mathjax = "1";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/202301250055096.png".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://jlutangchuan.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>唐川的博客</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001632.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/JLUtangchuan/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233356.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=382522283" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233212.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/tang-chuan-5-26" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704233139.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001857.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <!-- <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu"> -->
+    </div>
+  </div>
+  <!-- <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span> -->
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono"></span>
+            <span class="shironeko">唐川的博客</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-gears" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AE%BA%E6%96%87/">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                          论文
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          编程
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                          <i class="fa fa-diamond" aria-hidden="true"></i>
+                          数学
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    人文
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          影视
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                          随记
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                          <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                          诗词
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133348.jpeg);" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133348.jpeg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133348.jpeg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      python可视化</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">唐川</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-13<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id=""><a href="#" class="headerlink" title=""></a>python可视化</h1><p>后续如果再学习可视化就是列一些看到不错的图加上自己的实现代码</p>
+<h2 id="预备"><a href="#预备" class="headerlink" title="预备"></a>预备</h2><h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
+<li><p>掌握数据可视化常见图都有哪些？每个图想做什么事情？</p>
+</li>
+<li><p>python实现这些图需要设置哪些参数？pd、mpl和sns的基本用法？</p>
+</li>
+</ul>
+<h3 id="时间安排"><a href="#时间安排" class="headerlink" title="时间安排"></a>时间安排</h3><p>主要根据[^1]进行学习，感觉正常速度的话需要看完要1个月，看完+写代码要2个月，看完+记笔记+写代码要2个半月，前面可以三个任务都做，后面可以提速一下。</p>
+<h3 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h3><p>主要根据可视化50图[^1]进行学习，还有一个视频课[^2]，因为自已pandas用得少，不太熟练，还会补充学一些pandas的知识，另外就是把这些图的模板留一下，方便未来使用。</p>
+<p>前面见过的图主要学习matplotlib的代码风格以及参数选项、后面一些没见过的图主要学习这个图的用途、绘制方法以及如何对图进行解读。</p>
+<p>这些50图主要还是从几个主要的图中派生出来的，派生的意义可能有：1. 加入更多信息 2. 样式更加美观 3. 突出某些信息</p>
+<h2 id="可视化50图"><a href="#可视化50图" class="headerlink" title="可视化50图"></a>可视化50图</h2><h3 id="0-pandas-amp-matplotlib-review"><a href="#0-pandas-amp-matplotlib-review" class="headerlink" title="0. pandas &amp; matplotlib review"></a>0. pandas &amp; matplotlib review</h3><p><strong>pandas基本用法</strong></p>
+<ol>
+<li>特点<ul>
+<li><p>处理浮点与非浮点数据里的<strong>缺失数据</strong>，表示为 <code>NaN</code>；</p>
+</li>
+<li><p>大小可变：<strong>插入或删除</strong> DataFrame 等多维对象的列；</p>
+</li>
+<li><p>自动、显式<strong>数据对齐</strong>：显式地将对象与一组标签对齐，也可以忽略标签，在 Series、DataFrame 计算时自动与数据对齐；</p>
+</li>
+<li><p>强大、灵活的<strong>分组</strong>（group by）功能：<strong>拆分-应用-组合</strong>数据集，聚合、转换数据；</p>
+</li>
+<li><p>把 Python 和 NumPy 数据结构里不规则、不同索引的数据<strong>轻松</strong>地转换为 DataFrame 对象；</p>
+</li>
+<li><p>基于智能标签，对大型数据集进行<strong>切片</strong>、<strong>花式索引</strong>、<strong>子集分解</strong>等操作；</p>
+</li>
+<li><p>直观地<strong>合并（merge）</strong>、<strong>连接（join）</strong>数据集；</p>
+</li>
+<li><p>灵活地<strong>重塑（reshape）</strong>、<strong>透视（pivot）</strong>数据集；</p>
+</li>
+<li><p><strong>轴</strong>支持结构化标签：一个刻度支持多个标签；</p>
+</li>
+<li><p>成熟的 IO 工具：读取<strong>文本文件</strong>（CSV 等支持分隔符的文件）、Excel 文件、数据库等来源的数据，利用超快的 <strong>HDF5</strong> 格式保存 &#x2F; 加载数据；</p>
+</li>
+<li><p><strong>时间序列</strong>：支持日期范围生成、频率转换、移动窗口统计、移动窗口线性回归、日期位移等时间序列功能。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>matplotlib</strong></p>
+<p>见前面的笔记</p>
+<h3 id="1-关联分析"><a href="#1-关联分析" class="headerlink" title="1. 关联分析"></a>1. 关联分析</h3><ul>
+<li><p>散点图、气泡图、待线性回归的散点图、抖动图、计数图</p>
+<table>
+    <tr>
+        <td>图</td>
+        <td>描述</td>
+        <td>图示</td>
+   <td>matplotlib实现</td>
+    </tr>
+    <tr>
+        <td>抖动图</td>
+        <td>通常，多个数据点具有完全相同的 X 和 Y 值。 结果，多个点绘制会重叠并隐藏。 为避免这种情况，请将数据点稍微抖动，以便可以直观地看到它们。 使用 seaborn 的 `stripplot（）` 很方便实现这个功能。</td>
+        <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200811105527.png" style="zoom:80%;" /></td>
+        <td>seaborn自带实现。sns.stripplot(df.cty, df.hwy, jitter=0.25, size=8, ax=ax, linewidth=.5)</td>
+    </tr>
+    <tr>
+        <td>气泡图</td>
+        <td>气泡图（bubble chart）是可用于展示三个变量之间的关系。</td>
+        <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200811110702.png" style="zoom:80%;" /></td>
+        <td>第三个变量通过改变点的大小实现</td>
+    </tr>
+    <tr>
+        <td>带线性回归的散点图</td>
+        <td>加入一条线性预测以及error range</td>
+        <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/Scatterplot_with_lineofbestfit_Seaborn-min-1024x512.webp" style="zoom:80%;" /></td>
+        <td>sns.lmplot</td>
+    </tr>
+    <tr>
+        <td>计数图</td>
+        <td>一种避免点重叠问题的方法是增加点的大小，取决于有多少点在那个点上。所以，点的尺寸越大，它周围的点的集中度就越大。</td>
+        <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/Counts_plot_Matplotlib-min-1024x640.webp" style="zoom:80%;" /></td>
+        <td>sns.stripplot(df_counts.cty, df_counts.hwy, size=df_counts.counts*2, ax=ax)</td>
+    </tr>
+</table>
+
+</li>
+<li><p>边缘直方图、边缘箱式图</p>
+ <table>
+     <tr>
+         <td>图</td>
+         <td>描述</td>
+         <td>图示</td>
+      <td>matplotlib实现</td>
+     </tr>
+     <tr>
+         <td>边缘直方图</td>
+         <td>探索两个变量各自的分布</td>
+         <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/6_Marginal_histogram_Matplotlib-min-1024x640.webp" style="zoom:80%;" ></td>
+         <td>左上、右上、左下三个subplot；注意画hist的方向参数</td>
+     </tr>
+     <tr>
+         <td>边缘箱式图</td>
+         <td>在上图的基础上将直方图换成箱式图</td>
+         <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/7_Marginal_boxplot_Matplotlib-min-1024x640.png" style="zoom:80%;" /></td>
+         <td>sns.boxplot(df.hwy, ax=ax_right, orient="v")</td>
+     </tr>
+ </table>
+ 
+</li>
+<li><p>相关图、矩阵图</p>
+ <table>
+     <tr>
+         <td>图</td>
+         <td>描述</td>
+         <td>图示</td>
+         <td>matplotlib实现</td>
+     </tr>
+     <tr>
+         <td>相关图(Correllogram)</td>
+         <td>相关图用于直观地查看给定数据框(或二维数组)中所有可能的数值变量对之间的相关度量</td>
+         <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/8_Correlogram_Matplotlib-min.png" style="zoom:80%;" /></td>
+         <td>sns.heatmap(df.corr(), xticklabels=df.corr().columns, yticklabels=df.corr().columns, cmap='RdYlGn', center=0, annot=True)</td>
+     </tr>
+     <tr>
+         <td>矩阵图Pairwise Plot</td>
+         <td>Pairwise plot is a favorite in exploratory analysis to understand the relationship between all possible pairs of numeric variables. It is a must have tool for bivariate analysis.</td>
+         <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/9_Pairplot_lines_Seaborn-min-1024x870.png" style="zoom:80%;" /></td>
+         <td>`sns.pairplot(df, kind="scatter", hue="species", plot_kws=dict(s=80, edgecolor="white", linewidth=2.5)) ` `sns.pairplot(df, kind="reg", hue="species")`</td>
+     </tr>
+ </table></li>
+</ul>
+<h3 id="4-偏差分析"><a href="#4-偏差分析" class="headerlink" title="4. 偏差分析"></a>4. 偏差分析</h3><ul>
+<li>偏差分析</li>
+<li>偏差条形图、偏差文本、偏差点阵图、面积图、带标记的偏差棒棒糖图</li>
+</ul>
+<h3 id="5-序关系"><a href="#5-序关系" class="headerlink" title="5. 序关系"></a>5. 序关系</h3><ul>
+<li>排序</li>
+<li>有序条形图、点阵图、坡度图、哑铃图、棒棒糖图</li>
+</ul>
+<h3 id="6-分布"><a href="#6-分布" class="headerlink" title="6. 分布"></a>6. 分布</h3><ul>
+<li><p>连续变量的直方图、分类变量的直方图、密度图、带直方图的密度曲线、山峦图、分布式点阵图、箱式图、点图+箱图、小提琴图、人口金字塔、分类图</p>
+ <table>
+     <tr>
+         <td>图</td>
+         <td>描述</td>
+         <td>图示</td>
+         <td>matplotlib实现</td>
+     </tr>
+     <tr>
+         <td>山峦图</td>
+         <td>多个密度图（or 直方图）的叠加</td>
+         <td><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/24_JoyPlot_joypy-min.png" style="zoom:80%;" /></td>
+         <td>fig, axes = joypy.joyplot(mpg, column=['hwy', 'cty'], by="class", ylim='own', figsize=(14,10))</td>
+     </tr>
+     <tr>
+         <td>箱式图</td>
+         <td>中位数、四分位数Q1和Q3、上下限、异常值；上下限的计算方式为：IQR = Q3-Q1 上限=Q3+1.5IQR 下限=Q1-1.5IQR；异常值为上下限之外的数。箱式图适合单变量的数据分析以及多类似变量的对比分析、同时还能反应数据中的异常值（偏态与尾重）</td>
+         <td><img src="https://www.machinelearningplus.com/wp-content/uploads/2018/11/26_Boxplots_Matplotlib-min.png" style="zoom:80%;" /></td>
+         <td>sns.boxplot(x='class', y='hwy', data=df, notch=False)</td>
+     </tr>
+ </table></li>
+</ul>
+<h3 id="7-组合"><a href="#7-组合" class="headerlink" title="7.组合"></a>7.组合</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#31.-Waffle-Chart">Waffle Chart</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#32.-Pie-Chart">Pie Chart</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#33.-Treemap">Treemap</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#34.-Bar-Chart">Bar Chart</a></li>
+</ol>
+<h3 id="8-Change"><a href="#8-Change" class="headerlink" title="8. Change"></a>8. Change</h3><ol>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#35.-Time-Series-Plot">Time Series Plot</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#36.-Time-Series-with-Peaks-and-Troughs-Annotated">Time Series with Peaks and Troughs Annotated</a></p>
+</li>
+<li><p>Autocorrelation Plot</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#38.-Cross-Correlation-plot">Cross Correlation Plot</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#39.-Time-Series-Decomposition-Plot">Time Series Decomposition Plot</a> </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#40.-Multiple-Time-Series">Multiple Time Series</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#41.-Plotting-with-different-scales-using-secondary-Y-axis">Plotting with different scales using secondary Y axis</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#42.-Time-Series-with-Error-Bands">Time Series with Error Bands</a> ❤<img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/42_TimeSeries_with_ErrorBands_2_Matplotlib-min-1024x640.png"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#43.-Stacked-Area-Chart">Stacked Area Chart</a> ❤</p>
+<p><img src="https://www.machinelearningplus.com/wp-content/uploads/2018/11/43_Stacked_Area_Chart_Matplotlib-min-1024x576.png?ezimgfmt=rs:722x406/rscb1/ng:webp/ngcb1"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#44.-Area-Chart-UnStacked">Area Chart Unstacked</a></p>
+<p><img src="https://www.machinelearningplus.com/wp-content/uploads/2018/11/44_Unstacked_Area_Chart_Matplotlib-min-1024x576.png?ezimgfmt=rs:722x406/rscb1/ng:webp/ngcb1"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#45.-Calendar-Heat-Map">Calendar Heat Map</a> ❤github日历</p>
+<p><img src="https://www.machinelearningplus.com/wp-content/uploads/2018/11/45_Calendar_Heatmap_Matplotlib_Calmap-min-1024x187.png?ezimgfmt=rs:722x132/rscb1/ng:webp/ngcb1"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#46.-Seasonal-Plot">Seasonal Plot</a></p>
+</li>
+</ol>
+<h3 id="9-Groups"><a href="#9-Groups" class="headerlink" title="9. Groups"></a>9. Groups</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#47.-Dendrogram">Dendrogram</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#48.-Cluster-Plot">Cluster Plot</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#49.-Andrews-Curve">Andrews Curve</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/#50.-Parallel-Coordinates">Parallel Coordinates</a></li>
+</ol>
+<h2 id="常见问题以及解决方法"><a href="#常见问题以及解决方法" class="headerlink" title="常见问题以及解决方法"></a>常见问题以及解决方法</h2><ul>
+<li><p>matplotlib中文乱码问题？</p>
+<blockquote>
+<p>解决[^3]：</p>
+<pre><code class="python">import matplotlib as mpl
+mpl.rcParams[&#39;font.sans-serif&#39;] = [&#39;SimHei&#39;]
+mpl.rcParams[&#39;font.serif&#39;] = [&#39;SimHei&#39;]
+mpl.rcParams[&#39;axes.unicode_minus&#39;] = False # 解决保存图像是负号&#39;-&#39;显示为方块的问题,或者转换负号为字符串
+</code></pre>
+<p>这段代码目前已经放在自己的自定义代码段中，vscode直接键入<code>mpl</code>就可以了</p>
+<p>设置自定义代码段方法：</p>
+<p>vscode-&gt;文件-&gt;首选项-&gt;用户代码片段-&gt;python</p>
+<pre><code class="json">&quot;import matplotlib&quot;: &#123;
+        &quot;prefix&quot;: &quot;mpl&quot;,  
+        &quot;body&quot;: [  // 确认后添加的代码
+            &quot; import numpy as np              # 导入numpy库 &quot;,
+            &quot; import pandas as pd             # 导入pandas库 &quot;,
+            &quot; import matplotlib as mpl        # 导入matplotlib库 &quot;,
+            &quot; import matplotlib.pyplot as plt  &quot;,
+            &quot; import seaborn as sns           # 导入seaborn库 &quot;,
+            &quot;  &quot;,
+            &quot; mpl.rcParams[&#39;font.sans-serif&#39;] = [&#39;SimHei&#39;] &quot;,
+            &quot; mpl.rcParams[&#39;font.serif&#39;] = [&#39;SimHei&#39;] &quot;,
+            &quot; mpl.rcParams[&#39;axes.unicode_minus&#39;] = False # 解决保存图像是负号&#39;-&#39;显示为方块的问题,或者转换负号为字符串, &quot;,
+            &quot;$0&quot;  // $0代表光标最后停留的位置
+        ],
+        &quot;description&quot;: &quot;导入matplotlib并解决中文乱码问题&quot;
+    &#125;
+</code></pre>
+</blockquote>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/pms50/#/">https://datawhalechina.github.io/pms50/#/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pE411c7XM?from=search&seid=18165956011282754418">https://www.bilibili.com/video/BV1pE411c7XM?from=search&amp;seid=18165956011282754418</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jb51.net/article/150878.htm">https://www.jb51.net/article/150878.htm</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python">https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python</a><br>[^1]: <a target="_blank" rel="noopener" href="https://datawhalechina.github.io/pms50/#/">https://datawhalechina.github.io/pms50/#/</a><br><br>[^2]: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pE411c7XM?from=search&seid=18165956011282754418">https://www.bilibili.com/video/BV1pE411c7XM?from=search&amp;seid=18165956011282754418</a><br><br>[^3]: <a target="_blank" rel="noopener" href="https://www.jb51.net/article/150878.htm">https://www.jb51.net/article/150878.htm</a><br><br>[^4]: <a target="_blank" rel="noopener" href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python">https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python</a></li>
+</ul>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+        </div>
+        <!-- .entry-content -->
+        <!-- <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="null"></li>
+                <li class="wechat-code"><img src="null"></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/02/ji-zhu/li-lun/ji-qi-xue-xi/ju-zhen-qiu-pian-dao-zhi-shi-zong-jie/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200828155553.png" data-src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200828155553.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://obsidian-1302448228.cos.ap-beijing.myqcloud.com/gitee-bak/img/20200828155553.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                矩阵求偏导知识总结</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/08/09/ji-zhu/bian-cheng/matplotlib-xue-xi/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133348.jpeg" data-src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133348.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/blog/20200728133348.jpeg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                matplotlib学习</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200704232008.jpg" itemprop="image" alt="唐川" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">唐川</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+<!-- https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/latest.js -->
+<!-- https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML -->
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        // CONTENT_URL: '/content.json',
+        CONTENT_URL: 'https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 唐川<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001506.svg">
+        <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/picBed@dev/img/20200705001537.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/botui/0.3.9/botui.min.js"></script> -->
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/JLUtangchuan/JLUtangchuan.github.io@master/images/cat.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">唐川的博客</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/JLUtangchuan" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-gears" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AE%BA%E6%96%87/">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  论文
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%BC%96%E7%A8%8B/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  编程
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%95%B0%E5%AD%A6/">
+                  <i class="fa fa-diamond" aria-hidden="true"></i>
+                  数学
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            人文
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book faa-vertical" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  影视
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E8%AE%B0/">
+                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  随记
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%AF%97%E8%AF%8D/">
+                  <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+                  诗词
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="542358069"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

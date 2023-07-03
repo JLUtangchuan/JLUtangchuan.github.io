@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>唐川的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://jlutangchuan.github.io/"/>
+  <updated>2023-07-03T15:10:25.746Z</updated>
+  <id>http://jlutangchuan.github.io/</id>
+  
+  <author>
+    <name>唐川</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人插件推荐</title>
+    <link href="http://jlutangchuan.github.io/2023/07/03/sheng-huo/ge-ren-cha-jian-tui-jian/"/>
+    <id>http://jlutangchuan.github.io/2023/07/03/sheng-huo/ge-ren-cha-jian-tui-jian/</id>
+    <published>2023-07-02T16:00:00.000Z</published>
+    <updated>2023-07-03T15:10:25.746Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;个人插件推荐&lt;/h1&gt;&lt;h2 id=&quot;Chrome&quot;&gt;&lt;a href=&quot;#Chrome&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://jlutangchuan.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="Chrome" scheme="http://jlutangchuan.github.io/tags/Chrome/"/>
+    
+      <category term="VSCode" scheme="http://jlutangchuan.github.io/tags/VSCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>情绪价值</title>
+    <link href="http://jlutangchuan.github.io/2023/03/04/sheng-huo/qing-xu-jie-zhi/"/>
+    <id>http://jlutangchuan.github.io/2023/03/04/sheng-huo/qing-xu-jie-zhi/</id>
+    <published>2023-03-04T02:19:00.000Z</published>
+    <updated>2023-07-03T15:04:36.971Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;情绪价值&lt;/h1&gt;&lt;h2 id=&quot;情绪价值&quot;&gt;&lt;a href=&quot;#情绪价值&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://jlutangchuan.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>台式机编程环境配置</title>
+    <link href="http://jlutangchuan.github.io/2023/01/28/ji-zhu/bian-cheng/tai-shi-ji-bian-cheng-huan-jing-pei-zhi/"/>
+    <id>http://jlutangchuan.github.io/2023/01/28/ji-zhu/bian-cheng/tai-shi-ji-bian-cheng-huan-jing-pei-zhi/</id>
+    <published>2023-01-27T16:00:00.000Z</published>
+    <updated>2023-07-03T15:04:37.072Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;台式机编程环境配置&lt;/h1&gt;&lt;h2 id=&quot;配置清单&quot;&gt;&lt;a href=&quot;#配置清单&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="http://jlutangchuan.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>glob&amp;shutil学习</title>
+    <link href="http://jlutangchuan.github.io/2022/01/18/ji-zhu/bian-cheng/glob-shutil-xue-xi/"/>
+    <id>http://jlutangchuan.github.io/2022/01/18/ji-zhu/bian-cheng/glob-shutil-xue-xi/</id>
+    <published>2022-01-17T17:03:15.000Z</published>
+    <updated>2023-07-03T15:04:37.029Z</updated>
+    
+    <summary type="html">
+    
+      主要介绍python标准库中负责文件查找的高级库glob和负责文件复制删除移动的shutil，最后也简单介绍了linux的软链接
+    
+    </summary>
+    
+      <category term="编程" scheme="http://jlutangchuan.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Python" scheme="http://jlutangchuan.github.io/tags/Python/"/>
+    
+      <category term="Linux" scheme="http://jlutangchuan.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DyCo3D: Robust Instance Segmentation of 3D Point Clouds through Dynamic Convolution</title>
+    <link href="http://jlutangchuan.github.io/2021/11/24/ji-zhu/li-lun/lun-wen/dyco3d-robust-instance-segmentation-of-3d-point-clouds-through-dynamic-convolution/"/>
+    <id>http://jlutangchuan.github.io/2021/11/24/ji-zhu/li-lun/lun-wen/dyco3d-robust-instance-segmentation-of-3d-point-clouds-through-dynamic-convolution/</id>
+    <published>2021-11-24T15:50:46.000Z</published>
+    <updated>2023-07-03T15:04:37.103Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;DyCo3D: Robust Instance Segmentation of 3D Point Clouds through Dynamic
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OccuSeg: Occupancy-aware 3D Instance Segmentation</title>
+    <link href="http://jlutangchuan.github.io/2021/10/26/ji-zhu/li-lun/lun-wen/occuseg-occupancy-aware-3d-instance-segmentation/"/>
+    <id>http://jlutangchuan.github.io/2021/10/26/ji-zhu/li-lun/lun-wen/occuseg-occupancy-aware-3d-instance-segmentation/</id>
+    <published>2021-10-26T15:09:30.000Z</published>
+    <updated>2023-07-03T15:04:37.111Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;《OccuSeg-Occupancy-aware-3D-Instance-Segmentation》Paper-Reading&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PRML-绪论</title>
+    <link href="http://jlutangchuan.github.io/2021/10/25/ji-zhu/li-lun/ji-qi-xue-xi/prml-xu-lun/"/>
+    <id>http://jlutangchuan.github.io/2021/10/25/ji-zhu/li-lun/ji-qi-xue-xi/prml-xu-lun/</id>
+    <published>2021-10-24T17:30:02.000Z</published>
+    <updated>2023-07-03T15:04:37.086Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;PRML-绪论&lt;/h1&gt;&lt;p&gt;&lt;em&gt;update
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://jlutangchuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MachineLearning" scheme="http://jlutangchuan.github.io/tags/MachineLearning/"/>
+    
+      <category term="PRML" scheme="http://jlutangchuan.github.io/tags/PRML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Instance Segmentation in 3D Scenes using Semantic Superpoint Tree Networks</title>
+    <link href="http://jlutangchuan.github.io/2021/10/24/ji-zhu/li-lun/lun-wen/instance-segmentation-in-3d-scenes-using-semantic-superpoint-tree-networks/"/>
+    <id>http://jlutangchuan.github.io/2021/10/24/ji-zhu/li-lun/lun-wen/instance-segmentation-in-3d-scenes-using-semantic-superpoint-tree-networks/</id>
+    <published>2021-10-24T02:31:41.000Z</published>
+    <updated>2023-07-03T15:04:37.110Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;《Instance-Segmentation-in-3D-Scenes-using-Semantic-Superpoint-Tree-Networks》Paper-Reading&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+      <category term="InstanceSegmentation" scheme="http://jlutangchuan.github.io/tags/InstanceSegmentation/"/>
+    
+      <category term="PointCloud" scheme="http://jlutangchuan.github.io/tags/PointCloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hierarchical Aggregation for 3D Instance Segmentation</title>
+    <link href="http://jlutangchuan.github.io/2021/10/11/ji-zhu/li-lun/lun-wen/hierarchical-aggregation-for-3d-instance-segmentation/"/>
+    <id>http://jlutangchuan.github.io/2021/10/11/ji-zhu/li-lun/lun-wen/hierarchical-aggregation-for-3d-instance-segmentation/</id>
+    <published>2021-10-11T10:48:53.000Z</published>
+    <updated>2023-07-03T15:04:37.108Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;Hierarchical Aggregation for 3D Instance Segmentation&lt;/h1&gt;&lt;h2 id=&quot;论文信息-HAIS&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+      <category term="InstanceSegmentation" scheme="http://jlutangchuan.github.io/tags/InstanceSegmentation/"/>
+    
+      <category term="PointCloud" scheme="http://jlutangchuan.github.io/tags/PointCloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PointGroup: Dual-Set Point Grouping for 3D Instance Segmentation</title>
+    <link href="http://jlutangchuan.github.io/2021/09/06/ji-zhu/li-lun/lun-wen/pointgroup-dual-set-point-grouping-for-3d-instance-segmentation/"/>
+    <id>http://jlutangchuan.github.io/2021/09/06/ji-zhu/li-lun/lun-wen/pointgroup-dual-set-point-grouping-for-3d-instance-segmentation/</id>
+    <published>2021-09-06T15:36:41.000Z</published>
+    <updated>2023-07-03T15:04:37.114Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;PointGroup: Dual-Set Point Grouping for 3D Instance Segmentation&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+      <category term="InstanceSegmentation" scheme="http://jlutangchuan.github.io/tags/InstanceSegmentation/"/>
+    
+      <category term="PointCloud" scheme="http://jlutangchuan.github.io/tags/PointCloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>当焦虑型依赖遇见回避型依赖-心理笔记</title>
+    <link href="http://jlutangchuan.github.io/2021/07/09/sheng-huo/dang-jiao-lu-xing-yi-lai-yu-jian-hui-bi-xing-yi-lai-xin-li-xue-bi-ji/"/>
+    <id>http://jlutangchuan.github.io/2021/07/09/sheng-huo/dang-jiao-lu-xing-yi-lai-yu-jian-hui-bi-xing-yi-lai-xin-li-xue-bi-ji/</id>
+    <published>2021-07-08T16:00:00.000Z</published>
+    <updated>2023-07-03T15:04:36.969Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://jlutangchuan.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>余秀华的诗</title>
+    <link href="http://jlutangchuan.github.io/2021/05/16/shi-ci/yu-xiu-hua-de-shi/"/>
+    <id>http://jlutangchuan.github.io/2021/05/16/shi-ci/yu-xiu-hua-de-shi/</id>
+    <published>2021-05-16T13:17:06.000Z</published>
+    <updated>2023-07-03T15:04:36.950Z</updated>
+    
+    <summary type="html">
+    
+      如果给你寄一本书，我不会寄给你诗歌 我要给你一本关于植物，关于庄稼的 告诉你稻子和稗子的区别 告诉你一棵稗子 提心吊胆的春天
+    
+    </summary>
+    
+      <category term="诗词" scheme="http://jlutangchuan.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mac OS上安装XAMPP</title>
+    <link href="http://jlutangchuan.github.io/2021/04/25/ji-zhu/bian-cheng/mac-os-shang-an-zhuang-xampp/"/>
+    <id>http://jlutangchuan.github.io/2021/04/25/ji-zhu/bian-cheng/mac-os-shang-an-zhuang-xampp/</id>
+    <published>2021-04-25T02:34:27.000Z</published>
+    <updated>2023-07-03T15:04:37.040Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;Mac OS上安装XAMPP&lt;/h1&gt;&lt;p&gt;昨天把黑苹果装上了，今天尝试安装一下XAMPP&lt;/p&gt;
+&lt;h3 id=&quot;第一步：下载程序包&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="http://jlutangchuan.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Mac OS" scheme="http://jlutangchuan.github.io/tags/Mac-OS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>科学观</title>
+    <link href="http://jlutangchuan.github.io/2021/04/22/sheng-huo/ke-xue-guan/"/>
+    <id>http://jlutangchuan.github.io/2021/04/22/sheng-huo/ke-xue-guan/</id>
+    <published>2021-04-22T15:29:42.000Z</published>
+    <updated>2023-07-03T15:04:36.973Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;科学观&lt;/h1&gt;&lt;h2 id=&quot;科学与科学观&quot;&gt;&lt;a href=&quot;#科学与科学观&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://jlutangchuan.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="哲学" scheme="http://jlutangchuan.github.io/tags/%E5%93%B2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Bottom-Up and Top-Down Attention for Image Captioningand Visual Question Answering</title>
+    <link href="http://jlutangchuan.github.io/2021/02/01/ji-zhu/li-lun/lun-wen/bottom-up-and-top-down-attention-for-image-captioningand-visual-question-answering/"/>
+    <id>http://jlutangchuan.github.io/2021/02/01/ji-zhu/li-lun/lun-wen/bottom-up-and-top-down-attention-for-image-captioningand-visual-question-answering/</id>
+    <published>2021-02-01T13:51:07.000Z</published>
+    <updated>2023-07-03T15:04:37.099Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;Bottom-Up and Top-Down Attention for Image Captioningand Visual Question
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ShapeCaptioner: Generative Caption Network for 3D Shapes by Learning a Mapping from Parts Detected in Multiple Views to Sentences</title>
+    <link href="http://jlutangchuan.github.io/2021/02/01/ji-zhu/li-lun/lun-wen/shapecaptioner-generative-caption-network-for-3d-shapes-by-learning-a-mapping-from-parts-detected-in-multiple-views-to-sentences/"/>
+    <id>http://jlutangchuan.github.io/2021/02/01/ji-zhu/li-lun/lun-wen/shapecaptioner-generative-caption-network-for-3d-shapes-by-learning-a-mapping-from-parts-detected-in-multiple-views-to-sentences/</id>
+    <published>2021-02-01T08:32:56.000Z</published>
+    <updated>2023-07-03T15:06:27.000Z</updated>
+    
+    <summary type="html">
+    
+      为3D模型自动生成文本描述(ShapeCaptioner)
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>云边有个小卖部</title>
+    <link href="http://jlutangchuan.github.io/2021/01/21/du-shu-bi-ji/yun-bian-you-ge-xiao-mai-bu/"/>
+    <id>http://jlutangchuan.github.io/2021/01/21/du-shu-bi-ji/yun-bian-you-ge-xiao-mai-bu/</id>
+    <published>2021-01-21T05:15:16.000Z</published>
+    <updated>2023-07-03T15:04:36.977Z</updated>
+    
+    <summary type="html">
+    
+      Here&#39;s something encrypted, password is required to continue reading.
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://jlutangchuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="小说" scheme="http://jlutangchuan.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>千与千寻</title>
+    <link href="http://jlutangchuan.github.io/2021/01/21/du-shu-bi-ji/qian-yu-qian-xun/"/>
+    <id>http://jlutangchuan.github.io/2021/01/21/du-shu-bi-ji/qian-yu-qian-xun/</id>
+    <published>2021-01-21T05:15:16.000Z</published>
+    <updated>2023-07-03T15:04:36.980Z</updated>
+    
+    <summary type="html">
+    
+      一个小女孩初入成人世界的成长史，在成人社会，每个人都要找到一份工作避免被淘汰（被变成猪吃掉），这个社会也是冷漠、物欲横流的，但在这其中也不乏朋友、恩人、爱人，我们要做的是不要改变自己的本心,保持善良与坚强,不被欲望侵蚀。
+    
+    </summary>
+    
+      <category term="随记" scheme="http://jlutangchuan.github.io/categories/%E9%9A%8F%E8%AE%B0/"/>
+    
+    
+      <category term="影视剧" scheme="http://jlutangchuan.github.io/tags/%E5%BD%B1%E8%A7%86%E5%89%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GTD任务管理</title>
+    <link href="http://jlutangchuan.github.io/2021/01/18/sheng-huo/gtd-ren-wu-guan-li/"/>
+    <id>http://jlutangchuan.github.io/2021/01/18/sheng-huo/gtd-ren-wu-guan-li/</id>
+    <published>2021-01-18T14:59:49.000Z</published>
+    <updated>2023-07-03T15:04:36.966Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;GTD任务管理&lt;/h1&gt;&lt;h3 id=&quot;为什么要学GTD？&quot;&gt;&lt;a href=&quot;#为什么要学GTD？&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://jlutangchuan.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Self attention工作两篇</title>
+    <link href="http://jlutangchuan.github.io/2021/01/16/ji-zhu/li-lun/lun-wen/self-attention-gong-zuo-liang-pian/"/>
+    <id>http://jlutangchuan.github.io/2021/01/16/ji-zhu/li-lun/lun-wen/self-attention-gong-zuo-liang-pian/</id>
+    <published>2021-01-16T12:53:00.000Z</published>
+    <updated>2023-07-03T15:04:37.116Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;Self attention工作两篇&lt;/h1&gt;&lt;p&gt;最近在看自注意力的工作，要把这个加到现有的模型中，先记录一下两篇引用量比较高的工作&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://jlutangchuan.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="PaperReading" scheme="http://jlutangchuan.github.io/tags/PaperReading/"/>
+    
+  </entry>
+  
+</feed>
